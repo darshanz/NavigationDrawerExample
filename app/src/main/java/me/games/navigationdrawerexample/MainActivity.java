@@ -59,7 +59,22 @@ public class MainActivity extends AppCompatActivity {
         mDrawerItemList.add(item2);
 
 
-        DrawerAdapter adapter = new DrawerAdapter(mDrawerItemList);
+        DrawerAdapter adapter = new DrawerAdapter(mDrawerItemList, "Drawer Adapter");
+
+        adapter.setOnItemClickLister(new DrawerAdapter.OnItemSelecteListener() {
+            @Override
+            public void onItemSelected(View v, int position) {
+                switch (position){
+                    case 0:
+                        break;
+                    case 1:
+                        Toast.makeText(MainActivity.this, "Clicked at : "+position , Toast.LENGTH_SHORT).show();
+
+                        break;
+                }
+
+            }
+        });
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
